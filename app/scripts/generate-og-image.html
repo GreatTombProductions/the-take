@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Generate OG Image</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+    canvas {
+      border: 1px solid #334155;
+      margin: 20px 0;
+      max-width: 100%;
+      height: auto;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    .instructions {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>The Take — OG Image Generator</h1>
+
+  <div class="instructions">
+    <strong>Instructions:</strong>
+    <ol>
+      <li>The canvas below shows the preview</li>
+      <li>Click "Download PNG" to save the image</li>
+      <li>Save as <code>og-image.png</code> in the <code>app/public/</code> directory</li>
+    </ol>
+  </div>
+
+  <canvas id="canvas" width="1200" height="630"></canvas>
+
+  <button id="download">Download PNG</button>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = '#0f172a';
+    ctx.fillRect(0, 0, 1200, 630);
+
+    // Grid pattern
+    ctx.strokeStyle = '#1e293b';
+    ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.3;
+    for (let x = 0; x < 1200; x += 40) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, 630);
+      ctx.stroke();
+    }
+    for (let y = 0; y < 630; y += 40) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(1200, y);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1.0;
+
+    // Gradient overlay
+    const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+    gradient.addColorStop(0, 'rgba(59, 130, 246, 0.1)');
+    gradient.addColorStop(1, 'rgba(139, 92, 246, 0.05)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 1200, 630);
+
+    // Title
+    ctx.fillStyle = '#f1f5f9';
+    ctx.font = 'bold 96px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('The Take', 600, 220);
+
+    // Subtitle
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '36px system-ui, -apple-system, sans-serif';
+    ctx.fillText('Tour Economics Forecast Tool', 600, 290);
+
+    // Tagline
+    ctx.fillStyle = '#64748b';
+    ctx.font = '24px system-ui, -apple-system, sans-serif';
+    ctx.fillText('Data-driven insights for music industry touring', 600, 380);
+
+    // Helper function for rounded rectangles
+    function roundRect(x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    // Stats boxes
+    const boxes = [
+      { x: 200, color: '#3b82f6', title: 'Per-Venue', subtitle: 'Revenue & Expenses' },
+      { x: 490, color: '#10b981', title: '3 Scenarios', subtitle: 'Conservative to Steelman' },
+      { x: 780, color: '#f59e0b', title: 'Risk Analysis', subtitle: 'Quantified Exposure' }
+    ];
+
+    boxes.forEach(box => {
+      // Box background
+      ctx.globalAlpha = 0.8;
+      ctx.fillStyle = '#1e293b';
+      roundRect(box.x, 440, 220, 100, 8);
+      ctx.fill();
+      ctx.globalAlpha = 1.0;
+
+      // Box title
+      ctx.fillStyle = box.color;
+      ctx.font = 'bold 32px system-ui, -apple-system, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(box.title, box.x + 110, 480);
+
+      // Box subtitle
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '16px system-ui, -apple-system, sans-serif';
+      ctx.fillText(box.subtitle, box.x + 110, 510);
+    });
+
+    // Download functionality
+    document.getElementById('download').addEventListener('click', () => {
+      canvas.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'og-image.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 'image/png');
+    });
+  </script>
+</body>
+</html>

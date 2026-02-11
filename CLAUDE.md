@@ -23,11 +23,12 @@ Sam (Synestia's frontman) enthusiastically agreed, said "time to book tickets," 
 ### Completed
 - **[TOUR_ECONOMICS_RESEARCH_HANDOFF.md](TOUR_ECONOMICS_RESEARCH_HANDOFF.md)** — Strategic planning artifact. Full context on the situation, the people involved, and the research objectives.
 - **[TOUR_ECONOMICS_RESEARCH.md](TOUR_ECONOMICS_RESEARCH.md)** — Complete research document. 21-date routing with venue capacities, merch economics benchmarks, expense models, quantified risk taxonomy, forensic analysis of the $30-50K claim, message frameworks, and implementation parameters.
-- **[app/](app/)** — Interactive tour economics forecast tool (React + TypeScript + Tailwind). Per-venue revenue/expense breakdown, 3 scenario modes (conservative/mid/steelman), risk analysis, merch person comparison, mid-tour calibration with localStorage persistence. Run: `cd app && npm run dev`
+- **[app/](app/)** — Interactive tour economics forecast tool (React + TypeScript + Tailwind). Per-venue revenue/expense breakdown, 3 scenario modes (conservative/mid/steelman), risk analysis, merch person comparison, mid-tour calibration with localStorage persistence.
+  - **Live:** https://the-take-model.vercel.app/
+  - **Local dev:** `cd app && npm run dev`
 
 ### Next Phase
 - **Steelman integration** — DT precedent research (first tour supporting SOI, Nuclear Blast signing) suggests Synestia's gross merch could be $40-55K, not just $15-25K. The app's steelman scenario covers this, but the research docs need updating to incorporate the DT parallel and Chris Wiseman ecosystem analysis.
-- **Deployment** — Static site hosting for shareable URL. Currently local-only.
 - **Data refinement** — Verify routing mileage with GPS data, confirm venue merch cut policies, research Synestia's actual merch catalog for tour.
 
 ### Not Priorities (available but not driving work)
