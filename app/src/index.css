@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .section-card {
+    @apply bg-surface-800 border border-surface-600 rounded-lg p-6 mb-8;
+  }
+  .section-title {
+    @apply text-xl font-bold text-gray-100 mb-4;
+  }
+  .data-table {
+    @apply w-full text-sm;
+  }
+  .data-table th {
+    @apply text-left text-gray-400 font-medium px-3 py-2 border-b border-surface-600 whitespace-nowrap;
+  }
+  .data-table td {
+    @apply px-3 py-2 border-b border-surface-700 whitespace-nowrap;
+  }
+  .data-table tr:hover td {
+    @apply bg-surface-700/50;
+  }
+  .pill {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-medium;
+  }
+  .pill-green { @apply bg-green-900/40 text-green-400; }
+  .pill-red { @apply bg-red-900/40 text-red-400; }
+  .pill-amber { @apply bg-amber-900/40 text-amber-400; }
+  .pill-blue { @apply bg-blue-900/40 text-blue-400; }
+  .pill-gray { @apply bg-gray-800 text-gray-400; }
+  .editable-cell {
+    @apply cursor-pointer border-b border-dashed border-blue-800 hover:border-blue-500 text-blue-200 transition-colors;
+  }
+  .editable-cell-input {
+    @apply w-20 bg-surface-900 border border-blue-500 rounded px-1 py-0 text-sm font-mono text-gray-200 focus:outline-none;
+  }
+}
