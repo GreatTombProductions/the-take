@@ -111,29 +111,31 @@ export default function MerchPersonComparison({ totals, numDates }: Props) {
       {/* Delta analysis */}
       <div className="bg-surface-700 rounded-lg p-4 border border-surface-600">
         <h3 className="font-semibold text-white mb-3">Net Financial Analysis</h3>
-        <table className="data-table">
-          <tbody>
-            <tr>
-              <td className="text-gray-300">Cost premium for "experience"</td>
-              <td className="text-right font-mono text-amber-400">
-                {formatCurrency(costDeltaLow + proPerDiemTotal)} – {formatCurrency(costDeltaHigh + proPerDiemTotal)} more
-              </td>
-            </tr>
-            <tr>
-              <td className="text-gray-300">Expected risk reduction from experience (mitigated scenario)</td>
-              <td className="text-right font-mono text-gray-300">
-                {formatCurrency(totals.riskExpected * 0.3)} – {formatCurrency(totals.riskExpected * 0.5)} saved
-              </td>
-            </tr>
-            <tr className="border-t border-surface-600">
-              <td className="text-white font-semibold pt-2">Net delta (experienced vs. Megan)</td>
-              <td className="text-right font-mono font-bold text-amber-400 pt-2">
-                {formatCurrency(-costDeltaLow - proPerDiemTotal + totals.riskExpected * 0.5)} to{' '}
-                {formatCurrency(-costDeltaHigh - proPerDiemTotal + totals.riskExpected * 0.3)}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="data-table">
+            <tbody>
+              <tr>
+                <td className="text-gray-300">Cost premium for "experience"</td>
+                <td className="text-right font-mono text-amber-400">
+                  {formatCurrency(costDeltaLow + proPerDiemTotal)} – {formatCurrency(costDeltaHigh + proPerDiemTotal)} more
+                </td>
+              </tr>
+              <tr>
+                <td className="text-gray-300">Expected risk reduction from experience (mitigated scenario)</td>
+                <td className="text-right font-mono text-gray-300">
+                  {formatCurrency(totals.riskExpected * 0.3)} – {formatCurrency(totals.riskExpected * 0.5)} saved
+                </td>
+              </tr>
+              <tr className="border-t border-surface-600">
+                <td className="text-white font-semibold pt-2">Net delta (experienced vs. Megan)</td>
+                <td className="text-right font-mono font-bold text-amber-400 pt-2">
+                  {formatCurrency(-costDeltaLow - proPerDiemTotal + totals.riskExpected * 0.5)} to{' '}
+                  {formatCurrency(-costDeltaHigh - proPerDiemTotal + totals.riskExpected * 0.3)}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <p className="text-xs text-gray-500 mt-3">
           The "experienced" hire costs more than the risk they prevent. The net financial outcome of hiring
           Megan is within ~$1,200 in either direction — a rounding error on a {formatCurrency(totals.grossMerch)} gross tour.
