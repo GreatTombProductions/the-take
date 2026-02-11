@@ -610,7 +610,7 @@ export const synestiaSpring2026: Tour = {
 
   metadata: {
     lastUpdated: '2026-02-10',
-    notes: 'Compiled from web research (venue websites, Bandsintown, Ticketmaster, atVenu, Metal Injection, IndieMerchStore). Routing mileage estimated from geographic knowledge. See TOUR_ECONOMICS_RESEARCH.md for full source list.',
+    notes: 'Compiled from web research (venue websites, Bandsintown, Ticketmaster, atVenu, Metal Injection, IndieMerchStore). Routing mileage estimated from geographic knowledge.',
     sources: [
       { label: 'Shadow of Intent Tour Announcement', url: 'https://www.theprp.com/2025/12/03/news/shadow-of-intent-angelmaker-mental-cruelty-synestia-booked-for-spring-2026-north-american-tour/', confidence: 'high', section: 'Tour Data' },
       { label: 'Ticketmaster — Shadow of Intent', url: 'https://www.ticketmaster.com/shadow-of-intent-tickets/artist/2431457', confidence: 'high', section: 'Tour Data' },
