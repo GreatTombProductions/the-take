@@ -8,9 +8,11 @@ interface Props {
   results: DateResult[];
   totals: TourTotals;
   onUpdateVenue: (dateIndex: number, patch: Partial<Venue>) => void;
+  onUpdateDate: (dateIndex: number, patch: Partial<TourDate>) => void;
   onUpdateLodging: (dateIndex: number, patch: Partial<LodgingEstimate>) => void;
   onUpdateRouting: (dateIndex: number, patch: Partial<RoutingLeg>) => void;
   onUpdateAllVenues: (patch: Partial<Venue>) => void;
+  onUpdateAllDates: (patch: Partial<TourDate>) => void;
   onUpdateAllLodging: (patch: Partial<LodgingEstimate>) => void;
   onAddDate: (date: TourDate) => void;
   onRemoveDate: (dateIndex: number) => void;
@@ -125,8 +127,8 @@ function ColumnHeader({
 
 export default function DateBreakdown({
   tour, results, totals,
-  onUpdateVenue, onUpdateLodging, onUpdateRouting,
-  onUpdateAllVenues, onUpdateAllLodging,
+  onUpdateVenue, onUpdateDate, onUpdateLodging, onUpdateRouting,
+  onUpdateAllVenues, onUpdateAllDates, onUpdateAllLodging,
   onAddDate, onRemoveDate,
   onScrollToOngoingExpenses, onScrollToManagement,
 }: Props) {
@@ -189,6 +191,16 @@ export default function DateBreakdown({
               <th className="text-right">COGS</th>
               <th className="text-right">Mgmt</th>
               <th className="text-right">Net Merch</th>
+              <ColumnHeader
+                label="Guarantee"
+                editable
+                editAllConfig={{
+                  type: 'currency',
+                  min: 0,
+                  onApply: (v) => onUpdateAllDates({ showGuarantee: v }),
+                }}
+                className="text-right"
+              />
               <th className="text-right">Miles</th>
               <th className="text-right">Fuel</th>
               <ColumnHeader
@@ -270,6 +282,15 @@ export default function DateBreakdown({
                     </span>
                   </td>
                   <td className="text-right font-mono text-gray-200">{formatCurrency(r.revenue.netMerch)}</td>
+                  <td className="text-right font-mono text-gray-300">
+                    <EditableCell
+                      value={r.date.showGuarantee}
+                      displayValue={formatCurrency(r.date.showGuarantee)}
+                      onChange={(v) => onUpdateDate(r.date.index, { showGuarantee: v as number })}
+                      type="currency"
+                      min={0}
+                    />
+                  </td>
                   <td className="text-right font-mono text-gray-400">
                     <EditableCell
                       value={r.date.routing.miles}
@@ -329,6 +350,7 @@ export default function DateBreakdown({
               <td className="text-right font-mono text-gray-400 pt-3">{formatCurrency(totals.cogs)}</td>
               <td className="text-right font-mono text-gray-400 pt-3">{formatCurrency(totals.mgmtCuts)}</td>
               <td className="text-right font-mono text-white pt-3">{formatCurrency(totals.netMerch)}</td>
+              <td className="text-right font-mono text-white pt-3">{formatCurrency(totals.showGuarantees)}</td>
               <td colSpan={5} className="text-right font-mono text-gray-400 pt-3">
                 Expenses: {formatCurrency(totals.totalExpenses)}
               </td>
@@ -395,6 +417,7 @@ function AddDateForm({ tour, onAdd, onCancel }: { tour: Tour; onAdd: (d: TourDat
         miles,
       },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     });
   };
 

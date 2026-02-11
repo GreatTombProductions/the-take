@@ -64,6 +64,22 @@ export function useTourEditor(defaults: Tour) {
     }));
   }, []);
 
+  const updateDate = useCallback((dateIndex: number, patch: Partial<TourDate>) => {
+    setTour(prev => ({
+      ...prev,
+      dates: prev.dates.map(d =>
+        d.index === dateIndex ? { ...d, ...patch } : d
+      ),
+    }));
+  }, []);
+
+  const updateAllDates = useCallback((patch: Partial<TourDate>) => {
+    setTour(prev => ({
+      ...prev,
+      dates: prev.dates.map(d => ({ ...d, ...patch })),
+    }));
+  }, []);
+
   const addDate = useCallback((date: TourDate) => {
     setTour(prev => ({
       ...prev,
@@ -222,6 +238,8 @@ export function useTourEditor(defaults: Tour) {
     updateVenue,
     updateRouting,
     updateLodging,
+    updateDate,
+    updateAllDates,
     addDate,
     removeDate,
     updatePreTourExpense,

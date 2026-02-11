@@ -1,6 +1,6 @@
-import { useState, useRef, useImperativeHandle, forwardRef } from 'react';
+import { useRef, useImperativeHandle, forwardRef } from 'react';
 import type { Tour, ScenarioName, ScenarioParams, ManagementTerms, FuelParams } from '../types';
-import { formatPct } from '../engine';
+import { formatCurrency, formatPct } from '../engine';
 import EditableCell from './EditableCell';
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export interface TourToolbarHandle {
-  expandAndScrollToManagement: () => void;
+  scrollToManagement: () => void;
 }
 
 const TourToolbar = forwardRef<TourToolbarHandle, Props>(function TourToolbar({
@@ -24,7 +24,6 @@ const TourToolbar = forwardRef<TourToolbarHandle, Props>(function TourToolbar({
   onUpdateScenario, onUpdateManagement, onUpdateFuelParams,
   onReset, onExport, onImport,
 }, ref) {
-  const [showParams, setShowParams] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const managementRef = useRef<HTMLDivElement>(null);
   const scenario = tour.scenarios[scenarioName];
@@ -32,14 +31,10 @@ const TourToolbar = forwardRef<TourToolbarHandle, Props>(function TourToolbar({
   const fuel = tour.fuelParams;
 
   useImperativeHandle(ref, () => ({
-    expandAndScrollToManagement: () => {
-      setShowParams(true);
-      // Wait for render, then scroll + highlight
-      setTimeout(() => {
-        managementRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        managementRef.current?.classList.add('ring-2', 'ring-blue-500');
-        setTimeout(() => managementRef.current?.classList.remove('ring-2', 'ring-blue-500'), 2000);
-      }, 100);
+    scrollToManagement: () => {
+      managementRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      managementRef.current?.classList.add('ring-2', 'ring-blue-500');
+      setTimeout(() => managementRef.current?.classList.remove('ring-2', 'ring-blue-500'), 2000);
     },
   }));
 
@@ -47,12 +42,6 @@ const TourToolbar = forwardRef<TourToolbarHandle, Props>(function TourToolbar({
     <section className="section-card">
       <div className="flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => setShowParams(!showParams)}
-            className="px-3 py-1.5 text-xs bg-surface-700 border border-surface-600 rounded hover:bg-surface-600 text-gray-300"
-          >
-            {showParams ? 'Hide' : 'Show'} Parameters
-          </button>
           <button
             onClick={onExport}
             className="px-3 py-1.5 text-xs bg-surface-700 border border-surface-600 rounded hover:bg-surface-600 text-gray-300"
@@ -87,8 +76,7 @@ const TourToolbar = forwardRef<TourToolbarHandle, Props>(function TourToolbar({
         {isDirty && <span className="pill pill-amber">Modified</span>}
       </div>
 
-      {showParams && (
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Scenario params */}
           <div className="bg-surface-700 rounded-lg p-4 border border-surface-600">
             <h3 className="text-sm font-semibold text-gray-300 mb-3">
@@ -113,25 +101,6 @@ const TourToolbar = forwardRef<TourToolbarHandle, Props>(function TourToolbar({
                     type="currency"
                   />
                 </ParamRow>
-                <ParamRow label="Attendance Mult">
-                  <EditableCell
-                    value={scenario.attendanceMultiplier}
-                    displayValue={`${scenario.attendanceMultiplier}x`}
-                    onChange={(v) => onUpdateScenario(scenarioName, { attendanceMultiplier: v as number })}
-                    step={0.05}
-                  />
-                </ParamRow>
-                <tr>
-                  <td className="text-gray-400 py-1">Max Capacity</td>
-                  <td className="text-right py-1">
-                    <input
-                      type="checkbox"
-                      checked={scenario.useMaxCapacity ?? false}
-                      onChange={(e) => onUpdateScenario(scenarioName, { useMaxCapacity: e.target.checked })}
-                      className="accent-blue-500"
-                    />
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -160,13 +129,12 @@ const TourToolbar = forwardRef<TourToolbarHandle, Props>(function TourToolbar({
                     <option value="net">Net</option>
                   </select>
                 </ParamRow>
-                <ParamRow label="Show Guarantee">
-                  <EditableCell
-                    value={mgmt.showGuarantee}
-                    displayValue={`$${mgmt.showGuarantee}`}
-                    onChange={(v) => onUpdateManagement({ showGuarantee: v as number })}
-                    type="currency"
-                  />
+                <ParamRow label="Avg Guarantee">
+                  <span className="text-gray-400" title="Average of per-venue guarantees (edit in date breakdown)">
+                    {formatCurrency(tour.dates.length > 0
+                      ? tour.dates.reduce((s, d) => s + (d.showGuarantee ?? 0), 0) / tour.dates.length
+                      : 0)}
+                  </span>
                 </ParamRow>
                 <ParamRow label="Booking Agent">
                   <EditableCell
@@ -215,7 +183,6 @@ const TourToolbar = forwardRef<TourToolbarHandle, Props>(function TourToolbar({
             </table>
           </div>
         </div>
-      )}
     </section>
   );
 });

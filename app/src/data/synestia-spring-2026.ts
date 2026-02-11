@@ -45,14 +45,14 @@ export const synestiaSpring2026: Tour = {
       spotifyMonthlyListeners: 264_600,
       hasTouredBefore: false,
       merchCatalog: [
-        // From IndieMerchStore — synestia.indiemerch.com
-        { name: 'T-Shirt (various designs)', category: 'tshirt', retailPrice: 24.99, cogs: 9, unitsOnHand: 200 },
-        { name: 'Longsleeve', category: 'longsleeve', retailPrice: 37.00, cogs: 13, unitsOnHand: 60 },
-        { name: 'Pullover Hoodie', category: 'hoodie', retailPrice: 44.99, cogs: 20, unitsOnHand: 50 },
-        { name: 'Patch/Pin', category: 'patch', retailPrice: 7.50, cogs: 2, unitsOnHand: 100 },
-        { name: 'Premonitions Vinyl 12"', category: 'vinyl', retailPrice: 29.99, cogs: 15, unitsOnHand: 40 },
-        { name: 'CD', category: 'cd', retailPrice: 12.00, cogs: 4, unitsOnHand: 50 },
-        { name: 'Poster', category: 'poster', retailPrice: 12.00, cogs: 3, unitsOnHand: 80 },
+        // Tour prices — typically 10-20% above online (IndieMerchStore) to cover overhead + round numbers at table
+        { name: 'T-Shirt (various designs)', category: 'tshirt', retailPrice: 30, cogs: 9, unitsOnHand: 200 },
+        { name: 'Longsleeve', category: 'longsleeve', retailPrice: 40, cogs: 13, unitsOnHand: 60 },
+        { name: 'Pullover Hoodie', category: 'hoodie', retailPrice: 50, cogs: 20, unitsOnHand: 50 },
+        { name: 'Patch/Pin', category: 'patch', retailPrice: 10, cogs: 2, unitsOnHand: 100 },
+        { name: 'Premonitions Vinyl 12"', category: 'vinyl', retailPrice: 35, cogs: 15, unitsOnHand: 40 },
+        { name: 'CD', category: 'cd', retailPrice: 15, cogs: 4, unitsOnHand: 50 },
+        { name: 'Poster', category: 'poster', retailPrice: 15, cogs: 3, unitsOnHand: 80 },
       ],
     },
   ],
@@ -74,6 +74,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Home', toCity: 'Denver, CO', miles: 0 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 2,
@@ -91,6 +92,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Denver, CO', toCity: 'Grand Junction, CO', miles: 250 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     // OFF DAY: Apr 25 — driving Grand Junction → Seattle (1,250 mi)
     {
@@ -109,6 +111,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Grand Junction, CO', toCity: 'Seattle, WA', miles: 1250 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 4,
@@ -126,6 +129,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Seattle, WA', toCity: 'Vancouver, BC', miles: 140 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 5,
@@ -143,6 +147,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Vancouver, BC', toCity: 'Portland, OR', miles: 315 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     // OFF DAY: Apr 29 — driving Portland → Sacramento (580 mi)
     {
@@ -161,6 +166,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Portland, OR', toCity: 'Sacramento, CA', miles: 580 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 7,
@@ -178,6 +184,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Sacramento, CA', toCity: 'Santa Ana, CA', miles: 400 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 8,
@@ -195,6 +202,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Santa Ana, CA', toCity: 'Mesa, AZ', miles: 360 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     // OFF DAY: May 3 — driving Mesa → San Antonio (1,000 mi)
     {
@@ -213,6 +221,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Mesa, AZ', toCity: 'San Antonio, TX', miles: 1000 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 10,
@@ -230,6 +239,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'San Antonio, TX', toCity: 'Lubbock, TX', miles: 420 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 11,
@@ -247,6 +257,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Lubbock, TX', toCity: 'Dallas, TX', miles: 330 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     // OFF DAY: May 7 — driving Dallas → Atlanta (780 mi)
     {
@@ -265,6 +276,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Dallas, TX', toCity: 'Atlanta, GA', miles: 780 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 13,
@@ -282,6 +294,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Atlanta, GA', toCity: 'Charlotte, NC', miles: 240 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 14,
@@ -299,6 +312,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Charlotte, NC', toCity: 'Richmond, VA', miles: 330 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 15,
@@ -316,6 +330,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Richmond, VA', toCity: 'Millvale, PA', miles: 360 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 16,
@@ -333,6 +348,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Millvale, PA', toCity: 'Cincinnati, OH', miles: 290 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     // OFF DAY: May 13 — driving Cincinnati → Baltimore (510 mi)
     {
@@ -351,6 +367,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Cincinnati, OH', toCity: 'Baltimore, MD', miles: 510 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 18,
@@ -368,6 +385,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Baltimore, MD', toCity: 'New York, NY', miles: 190 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     // OFF DAY: May 16 — driving NYC → Montreal (375 mi)
     {
@@ -386,6 +404,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'New York, NY', toCity: 'Montreal, QC', miles: 375 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     // OFF DAY: May 18
     {
@@ -404,6 +423,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Montreal, QC', toCity: 'Toronto, ON', miles: 335 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
     {
       index: 21,
@@ -421,6 +441,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Toronto, ON', toCity: 'Detroit, MI', miles: 235 },
       lodging: { type: 'camper', estimatedCost: 0 },
+      showGuarantee: 0,
     },
   ],
 
@@ -461,24 +482,20 @@ export const synestiaSpring2026: Tour = {
     conservative: {
       label: 'Conservative',
       conversionRate: 0.035,
-      avgTransactionValue: 25,
-      attendanceMultiplier: 0.90,
+      avgTransactionValue: 30,  // ~1 t-shirt at tour price ($30)
       description: 'First-tour band, opener position, weeknight-heavy routing. Streaming audience may not convert to live merch buyers at high rates.',
     },
     mid: {
       label: 'Mid-Range',
       conversionRate: 0.06,
-      avgTransactionValue: 28,
-      attendanceMultiplier: 1.0,
+      avgTransactionValue: 36,  // ~1 primary item ($35 avg) + ~25% add-on rate ($12 avg)
       description: 'Moderate conversion reflecting The Poetic Edda buzz, deathcore merch culture, and 264K Spotify listeners.',
     },
     steelman: {
       label: 'Steelman',
       conversionRate: 0.09,
-      avgTransactionValue: 32,
-      attendanceMultiplier: 1.0,
-      useMaxCapacity: true,
-      description: 'DT precedent: first-tour band in Wiseman orbit, viral EP, collector-driven genre. First-tour novelty premium. Maxes venues to capacity.',
+      avgTransactionValue: 42,  // premium mix (hoodies/vinyl weighted), ~50% add-on rate, collector behavior
+      description: 'DT precedent: first-tour band in Wiseman orbit, viral EP, collector-driven genre. First-tour novelty premium. Set Att% to 100% for sold-out scenario.',
     },
   },
 
@@ -589,7 +606,6 @@ export const synestiaSpring2026: Tour = {
     cutPct: 0.15,
     appliedTo: 'gross',
     bookingAgentPct: 0.10,
-    showGuarantee: 0, // openers on package tours typically get $0
   },
 
   metadata: {

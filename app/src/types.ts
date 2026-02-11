@@ -45,6 +45,7 @@ export interface TourDate {
   venue: Venue;
   routing: RoutingLeg;
   lodging: LodgingEstimate;
+  showGuarantee: number;
 }
 
 export interface OffDay {
@@ -108,8 +109,6 @@ export interface ScenarioParams {
   label: string;
   conversionRate: number;
   avgTransactionValue: number;
-  attendanceMultiplier: number;
-  useMaxCapacity?: boolean;
   description: string;
 }
 
@@ -117,7 +116,6 @@ export interface ManagementTerms {
   cutPct: number;
   appliedTo: 'gross' | 'net';
   bookingAgentPct: number;
-  showGuarantee: number;
 }
 
 export interface FuelParams {
@@ -183,6 +181,11 @@ export interface TourTotals {
   totalRevenue: number;
   totalExpenses: number;
   preTourExpenses: number;
+  fuelExpenses: number;
+  lodgingExpenses: number;
+  perDiemExpenses: number;
+  crewExpenses: number;
+  offDayExpenses: number;
   tourNet: number;
   perMember: number;
   riskExpected: number;

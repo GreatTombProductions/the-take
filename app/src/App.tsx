@@ -30,7 +30,7 @@ export default function App() {
   }, []);
 
   const scrollToManagement = useCallback(() => {
-    toolbarRef.current?.expandAndScrollToManagement();
+    toolbarRef.current?.scrollToManagement();
   }, []);
 
   return (
@@ -82,9 +82,11 @@ export default function App() {
         results={results}
         totals={totals}
         onUpdateVenue={editor.updateVenue}
+        onUpdateDate={editor.updateDate}
         onUpdateLodging={editor.updateLodging}
         onUpdateRouting={editor.updateRouting}
         onUpdateAllVenues={editor.updateAllVenues}
+        onUpdateAllDates={editor.updateAllDates}
         onUpdateAllLodging={editor.updateAllLodging}
         onAddDate={editor.addDate}
         onRemoveDate={editor.removeDate}
