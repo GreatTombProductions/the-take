@@ -2,6 +2,7 @@ import { useRef, useCallback } from 'react';
 import { synestiaSpring2026 } from './data/synestia-spring-2026';
 import { useTourEditor } from './hooks/useTourEditor';
 import { useScenario } from './hooks/useScenario';
+import type { ScenarioName } from './types';
 import TourHeader from './components/TourHeader';
 import TourToolbar from './components/TourToolbar';
 import type { TourToolbarHandle } from './components/TourToolbar';
@@ -18,6 +19,26 @@ export default function App() {
   const editor = useTourEditor(synestiaSpring2026);
   const { tour } = editor;
   const { scenarioName, setScenarioName, results, totals } = useScenario(tour);
+
+  // Save pre-steelman attendance rates so we can restore when switching away
+  const preSteelmanRatesRef = useRef<Map<number, number> | null>(null);
+
+  const handleScenarioChange = useCallback((name: ScenarioName) => {
+    if (name === 'steelman' && scenarioName !== 'steelman') {
+      // Save current per-venue rates, then set all to 100%
+      const rates = new Map<number, number>();
+      tour.dates.forEach(d => rates.set(d.index, d.venue.estimatedAttendanceRate));
+      preSteelmanRatesRef.current = rates;
+      editor.updateAllVenues({ estimatedAttendanceRate: 1.0 });
+    } else if (name !== 'steelman' && scenarioName === 'steelman' && preSteelmanRatesRef.current) {
+      // Restore saved per-venue rates
+      preSteelmanRatesRef.current.forEach((rate, index) => {
+        editor.updateVenue(index, { estimatedAttendanceRate: rate });
+      });
+      preSteelmanRatesRef.current = null;
+    }
+    setScenarioName(name);
+  }, [scenarioName, setScenarioName, tour.dates, editor]);
 
   // Section refs for scroll-to-source
   const ongoingExpensesRef = useRef<HTMLDivElement>(null);
@@ -39,7 +60,7 @@ export default function App() {
         tour={tour}
         totals={totals}
         scenarioName={scenarioName}
-        onScenarioChange={setScenarioName}
+        onScenarioChange={handleScenarioChange}
         isDirty={editor.isDirty}
       />
 

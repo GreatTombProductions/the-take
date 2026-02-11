@@ -86,7 +86,7 @@ export default function RiskAnalysis({ tour, totals }: Props) {
                   {formatCurrency(risk.withMitigationRange[0])}–{formatCurrency(risk.withMitigationRange[1])}
                 </td>
                 <td className="text-right font-mono text-gray-200">{formatCurrency(tourExpected)}</td>
-                <td className="text-gray-500 text-xs whitespace-nowrap">
+                <td className="text-gray-500 text-xs">
                   {risk.mitigationNote}
                 </td>
               </tr>

@@ -76,48 +76,50 @@ export default function Methodology({ tour }: Props) {
 
         <div>
           <h3 className="text-sm font-semibold text-gray-300 mb-2">Data Elements & Sources</h3>
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Data Element</th>
-                <th>Notes</th>
-                <th>Sources</th>
-              </tr>
-            </thead>
-            <tbody>
-              {CONFIDENCE_DATA.map(([element, notes], i) => {
-                const sections = ELEMENT_SOURCE_MAP[element] ?? [];
-                const sources = sections.flatMap(s => sourcesBySection[s] ?? []);
+          <div className="overflow-x-auto">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Data Element</th>
+                  <th>Notes</th>
+                  <th>Sources</th>
+                </tr>
+              </thead>
+              <tbody>
+                {CONFIDENCE_DATA.map(([element, notes], i) => {
+                  const sections = ELEMENT_SOURCE_MAP[element] ?? [];
+                  const sources = sections.flatMap(s => sourcesBySection[s] ?? []);
 
-                return (
-                  <tr key={i}>
-                    <td className="text-gray-300">{element}</td>
-                    <td className="text-gray-500 text-xs">{notes}</td>
-                    <td className="text-xs">
-                      {sources.length > 0 ? (
-                        <div className="flex flex-wrap gap-1">
-                          {sources.map((source, j) => (
-                            <a
-                              key={j}
-                              href={source.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-400 hover:text-blue-300 hover:underline"
-                              title={source.label}
-                            >
-                              {source.label}
-                            </a>
-                          ))}
-                        </div>
-                      ) : (
-                        <span className="text-gray-600">—</span>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                  return (
+                    <tr key={i}>
+                      <td className="text-gray-300">{element}</td>
+                      <td className="text-gray-500 text-xs">{notes}</td>
+                      <td className="text-xs">
+                        {sources.length > 0 ? (
+                          <div className="flex flex-wrap gap-1">
+                            {sources.map((source, j) => (
+                              <a
+                                key={j}
+                                href={source.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-400 hover:text-blue-300 hover:underline"
+                                title={source.label}
+                              >
+                                {source.label}
+                              </a>
+                            ))}
+                          </div>
+                        ) : (
+                          <span className="text-gray-600">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* Remaining sources not covered by the element map */}

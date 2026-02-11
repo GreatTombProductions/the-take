@@ -21,69 +21,71 @@ export default function PreTourExpenses({ tour, onUpdateExpense, onAddExpense, o
         Capital committed before show 1. Click any value to edit.
       </p>
 
-      <table className="data-table">
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Item</th>
-            <th className="text-right">Amount</th>
-            <th>Note</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {tour.preTourExpenses.map((exp, i) => (
-            <tr key={i} className="group">
-              <td className="text-gray-400">
-                <EditableCell
-                  value={exp.category}
-                  onChange={(v) => onUpdateExpense(i, { category: v as string })}
-                  type="text"
-                />
-              </td>
-              <td className="text-gray-200">
-                <EditableCell
-                  value={exp.label}
-                  onChange={(v) => onUpdateExpense(i, { label: v as string })}
-                  type="text"
-                />
-              </td>
-              <td className="text-right font-mono text-gray-200">
-                <EditableCell
-                  value={exp.amount}
-                  displayValue={formatCurrency(exp.amount)}
-                  onChange={(v) => onUpdateExpense(i, { amount: v as number })}
-                  type="currency"
-                  min={0}
-                />
-              </td>
-              <td className="text-gray-500 text-xs">
-                <EditableCell
-                  value={exp.note}
-                  onChange={(v) => onUpdateExpense(i, { note: v as string })}
-                  type="text"
-                />
-              </td>
-              <td className="text-center">
-                <button
-                  onClick={() => { if (confirm(`Remove "${exp.label}"?`)) onRemoveExpense(i); }}
-                  className="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-400 text-xs px-1"
-                  title="Remove expense"
-                >
-                  ×
-                </button>
-              </td>
+      <div className="overflow-x-auto">
+        <table className="data-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Item</th>
+              <th className="text-right">Amount</th>
+              <th>Note</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          <tr className="border-t-2 border-surface-600">
-            <td colSpan={2} className="font-semibold text-white pt-3">Total Pre-Tour Investment</td>
-            <td className="text-right font-mono font-bold text-red-400 pt-3">{formatCurrency(total)}</td>
-            <td colSpan={2} className="pt-3"></td>
-          </tr>
-        </tfoot>
-      </table>
+          </thead>
+          <tbody>
+            {tour.preTourExpenses.map((exp, i) => (
+              <tr key={i} className="group">
+                <td className="text-gray-400">
+                  <EditableCell
+                    value={exp.category}
+                    onChange={(v) => onUpdateExpense(i, { category: v as string })}
+                    type="text"
+                  />
+                </td>
+                <td className="text-gray-200">
+                  <EditableCell
+                    value={exp.label}
+                    onChange={(v) => onUpdateExpense(i, { label: v as string })}
+                    type="text"
+                  />
+                </td>
+                <td className="text-right font-mono text-gray-200">
+                  <EditableCell
+                    value={exp.amount}
+                    displayValue={formatCurrency(exp.amount)}
+                    onChange={(v) => onUpdateExpense(i, { amount: v as number })}
+                    type="currency"
+                    min={0}
+                  />
+                </td>
+                <td className="text-gray-500 text-xs">
+                  <EditableCell
+                    value={exp.note}
+                    onChange={(v) => onUpdateExpense(i, { note: v as string })}
+                    type="text"
+                  />
+                </td>
+                <td className="text-center">
+                  <button
+                    onClick={() => { if (confirm(`Remove "${exp.label}"?`)) onRemoveExpense(i); }}
+                    className="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-400 text-xs px-1"
+                    title="Remove expense"
+                  >
+                    ×
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr className="border-t-2 border-surface-600">
+              <td colSpan={2} className="font-semibold text-white pt-3">Total Pre-Tour Investment</td>
+              <td className="text-right font-mono font-bold text-red-400 pt-3">{formatCurrency(total)}</td>
+              <td colSpan={2} className="pt-3"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
 
       {adding ? (
         <AddExpenseForm

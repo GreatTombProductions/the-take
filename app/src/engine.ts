@@ -19,6 +19,7 @@ export function estimateDateRevenue(
   band: Band,
   mgmtCutPct: number,
   bookingAgentPct: number,
+  mgmtAppliedTo: 'gross' | 'net' = 'gross',
 ): DateRevenue {
   const { venue } = date;
   const attendance = Math.round(venue.capacity * venue.estimatedAttendanceRate);
@@ -27,7 +28,8 @@ export function estimateDateRevenue(
   const venueCut = merchGross * venue.merchCutPct;
   const cogsPct = computeBlendedCogsPct(band);
   const cogs = merchGross * cogsPct;
-  const mgmtCut = merchGross * mgmtCutPct;
+  const mgmtBase = mgmtAppliedTo === 'net' ? merchGross - venueCut - cogs : merchGross;
+  const mgmtCut = mgmtBase * mgmtCutPct;
   const netMerch = merchGross - venueCut - cogs - mgmtCut;
   const showGuarantee = date.showGuarantee ?? 0;
   const bookingAgentCut = showGuarantee * bookingAgentPct;
@@ -148,7 +150,7 @@ export function computeTourResults(
     .reduce((sum, r) => sum + r.amount, 0);
 
   for (const date of tour.dates) {
-    const revenue = estimateDateRevenue(date, scenario, band, tour.management.cutPct, tour.management.bookingAgentPct);
+    const revenue = estimateDateRevenue(date, scenario, band, tour.management.cutPct, tour.management.bookingAgentPct, tour.management.appliedTo);
     const expenses = estimateDateExpenses(date, tour);
     const addlRevForDate = perShowAddlRev + (date.index === tour.dates[0]?.index ? perTourAddlRev : 0);
     const dateNet = revenue.netMerch + revenue.showGuarantee - revenue.bookingAgentCut + addlRevForDate - expenses.total;

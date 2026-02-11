@@ -23,6 +23,7 @@ export default function AdditionalRevenue({ tour, onUpdateRevenue, onAddRevenue,
         These are added to total revenue alongside merch net.
       </p>
 
+      <div className="overflow-x-auto">
       <table className="data-table">
         <thead>
           <tr>
@@ -113,6 +114,7 @@ export default function AdditionalRevenue({ tour, onUpdateRevenue, onAddRevenue,
           </tfoot>
         )}
       </table>
+      </div>
 
       {adding ? (
         <AddRevenueForm

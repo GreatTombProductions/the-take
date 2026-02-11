@@ -495,7 +495,7 @@ export const synestiaSpring2026: Tour = {
       label: 'Steelman',
       conversionRate: 0.09,
       avgTransactionValue: 42,  // premium mix (hoodies/vinyl weighted), ~50% add-on rate, collector behavior
-      description: 'DT precedent: first-tour band in Wiseman orbit, viral EP, collector-driven genre. First-tour novelty premium. Set Att% to 100% for sold-out scenario.',
+      description: 'DT precedent: first-tour band in Wiseman orbit, viral EP, collector-driven genre. First-tour novelty premium. Auto-sets Att% to 100% (sold-out scenario).',
     },
   },
 
