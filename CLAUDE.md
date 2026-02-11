@@ -61,6 +61,7 @@ Sam (Synestia's frontman) enthusiastically agreed, said "time to book tickets," 
 | Synestia bill position | Opener (4th of 4) | HIGH |
 | Estimated gross merch (tour) | $15,000-$25,000 | MEDIUM |
 | Risk-adjusted loss from inexperience | $1,500-$3,500 | MEDIUM |
+| Show guarantees (est. w/ SL leverage) | $2,950 ($140/show avg) | MEDIUM |
 | Sam's claimed risk | $30,000-$50,000 | DEBUNKED |
 | Experienced merch person cost | $2,100-$4,200 | MEDIUM |
 | Megan's package cost | ~$2,000 + tips | HIGH |

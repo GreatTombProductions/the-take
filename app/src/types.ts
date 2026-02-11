@@ -152,6 +152,7 @@ export interface DateRevenue {
   mgmtCut: number;
   netMerch: number;
   showGuarantee: number;
+  bookingAgentCut: number;
 }
 
 export interface DateExpenses {
@@ -177,6 +178,7 @@ export interface TourTotals {
   mgmtCuts: number;
   netMerch: number;
   showGuarantees: number;
+  bookingAgentCuts: number;
   additionalRevenue: number;
   totalRevenue: number;
   totalExpenses: number;

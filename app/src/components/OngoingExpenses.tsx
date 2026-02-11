@@ -39,7 +39,13 @@ export default function OngoingExpenses({ tour, onUpdateExpense }: Props) {
             return (
               <tr key={i}>
                 <td className="text-gray-400">{exp.category}</td>
-                <td className="text-gray-200">{exp.label}</td>
+                <td className="text-gray-200">
+                    <EditableCell
+                      value={exp.label}
+                      onChange={(v) => onUpdateExpense(i, { label: String(v) })}
+                      type="text"
+                    />
+                  </td>
                 <td className="text-right font-mono text-gray-300">
                   {exp.perDay != null ? (
                     <EditableCell

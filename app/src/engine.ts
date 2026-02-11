@@ -18,6 +18,7 @@ export function estimateDateRevenue(
   scenario: ScenarioParams,
   band: Band,
   mgmtCutPct: number,
+  bookingAgentPct: number,
 ): DateRevenue {
   const { venue } = date;
   const attendance = Math.round(venue.capacity * venue.estimatedAttendanceRate);
@@ -28,6 +29,8 @@ export function estimateDateRevenue(
   const cogs = merchGross * cogsPct;
   const mgmtCut = merchGross * mgmtCutPct;
   const netMerch = merchGross - venueCut - cogs - mgmtCut;
+  const showGuarantee = date.showGuarantee ?? 0;
+  const bookingAgentCut = showGuarantee * bookingAgentPct;
 
   return {
     attendance,
@@ -36,7 +39,8 @@ export function estimateDateRevenue(
     cogs: round2(cogs),
     mgmtCut: round2(mgmtCut),
     netMerch: round2(netMerch),
-    showGuarantee: date.showGuarantee ?? 0,
+    showGuarantee,
+    bookingAgentCut: round2(bookingAgentCut),
   };
 }
 
@@ -144,10 +148,10 @@ export function computeTourResults(
     .reduce((sum, r) => sum + r.amount, 0);
 
   for (const date of tour.dates) {
-    const revenue = estimateDateRevenue(date, scenario, band, tour.management.cutPct);
+    const revenue = estimateDateRevenue(date, scenario, band, tour.management.cutPct, tour.management.bookingAgentPct);
     const expenses = estimateDateExpenses(date, tour);
     const addlRevForDate = perShowAddlRev + (date.index === tour.dates[0]?.index ? perTourAddlRev : 0);
-    const dateNet = revenue.netMerch + revenue.showGuarantee + addlRevForDate - expenses.total;
+    const dateNet = revenue.netMerch + revenue.showGuarantee - revenue.bookingAgentCut + addlRevForDate - expenses.total;
     cumulative += dateNet;
 
     results.push({
@@ -188,6 +192,7 @@ export function computeTourTotals(
     mgmtCuts: 0,
     netMerch: 0,
     showGuarantees: 0,
+    bookingAgentCuts: 0,
     additionalRevenue: addlRev,
     totalRevenue: 0,
     totalExpenses: 0,
@@ -210,6 +215,7 @@ export function computeTourTotals(
     totals.mgmtCuts += r.revenue.mgmtCut;
     totals.netMerch += r.revenue.netMerch;
     totals.showGuarantees += r.revenue.showGuarantee;
+    totals.bookingAgentCuts += r.revenue.bookingAgentCut;
     totals.totalExpenses += r.expenses.total;
     totals.fuelExpenses += r.expenses.fuel;
     totals.lodgingExpenses += r.expenses.lodging;
@@ -217,7 +223,7 @@ export function computeTourTotals(
     totals.crewExpenses += r.expenses.merchPerson;
   }
 
-  totals.totalExpenses += preTour + offDayExp + totals.venueCuts + totals.cogs + totals.mgmtCuts;
+  totals.totalExpenses += preTour + offDayExp + totals.venueCuts + totals.cogs + totals.mgmtCuts + totals.bookingAgentCuts;
   totals.totalRevenue = round2(totals.grossMerch + totals.showGuarantees + addlRev);
 
   // tourNet = totalRevenue - totalExpenses (COGS/venue/mgmt now on expense side)
@@ -239,6 +245,7 @@ export function computeTourTotals(
   totals.lodgingExpenses = round2(totals.lodgingExpenses);
   totals.perDiemExpenses = round2(totals.perDiemExpenses);
   totals.crewExpenses = round2(totals.crewExpenses);
+  totals.bookingAgentCuts = round2(totals.bookingAgentCuts);
 
   return totals;
 }

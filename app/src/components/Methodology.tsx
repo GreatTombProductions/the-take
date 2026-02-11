@@ -66,7 +66,8 @@ export default function Methodology({ tour }: Props) {
             <li>Synestia handles their own merch (no third-party merch company taking a cut)</li>
             <li>Venue merch cuts estimated at 10-25% depending on venue (0% at some smaller clubs)</li>
             <li>Management cut at 15% of gross (industry standard low end for Scott Lee's tier)</li>
-            <li>No show guarantees for the opener position (conservative; some openers get $100-$300)</li>
+            <li>Booking handled by management — no additional booking agent fee</li>
+            <li>Show guarantees estimated at $50-$250/show ($140 avg), scaled by market size, venue capacity, and day of week — reflects SL Management's leverage as a package deal with the headliner</li>
             <li>Merch catalog prices from IndieMerchStore (synestia.indiemerch.com)</li>
             <li>Routing mileage estimated from geographic knowledge; ±10% variance expected</li>
             <li>Lodging defaults to camper ($0) — editable per date if hotels needed</li>

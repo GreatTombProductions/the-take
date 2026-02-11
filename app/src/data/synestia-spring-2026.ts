@@ -74,7 +74,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Home', toCity: 'Denver, CO', miles: 0 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 175, // major market, Thu, 1350 cap
     },
     {
       index: 2,
@@ -92,7 +92,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Denver, CO', toCity: 'Grand Junction, CO', miles: 250 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 100, // small market, Fri
     },
     // OFF DAY: Apr 25 — driving Grand Junction → Seattle (1,250 mi)
     {
@@ -111,7 +111,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Grand Junction, CO', toCity: 'Seattle, WA', miles: 1250 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 150, // major market, Sun
     },
     {
       index: 4,
@@ -129,7 +129,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Seattle, WA', toCity: 'Vancouver, BC', miles: 140 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 100, // mid market, Mon, 500 cap
     },
     {
       index: 5,
@@ -147,7 +147,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Vancouver, BC', toCity: 'Portland, OR', miles: 315 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 100, // mid market, Tue
     },
     // OFF DAY: Apr 29 — driving Portland → Sacramento (580 mi)
     {
@@ -166,7 +166,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Portland, OR', toCity: 'Sacramento, CA', miles: 580 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 125, // mid market, Thu, 1000 cap
     },
     {
       index: 7,
@@ -184,7 +184,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Sacramento, CA', toCity: 'Santa Ana, CA', miles: 400 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 200, // major market (SoCal), Fri
     },
     {
       index: 8,
@@ -202,7 +202,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Santa Ana, CA', toCity: 'Mesa, AZ', miles: 360 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 175, // mid market, Sat, 1000 cap
     },
     // OFF DAY: May 3 — driving Mesa → San Antonio (1,000 mi)
     {
@@ -221,7 +221,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Mesa, AZ', toCity: 'San Antonio, TX', miles: 1000 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 150, // major market, Mon, 1800 cap
     },
     {
       index: 10,
@@ -239,7 +239,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'San Antonio, TX', toCity: 'Lubbock, TX', miles: 420 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 50, // small market, Tue, 500 cap
     },
     {
       index: 11,
@@ -257,7 +257,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Lubbock, TX', toCity: 'Dallas, TX', miles: 330 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 150, // major market, Wed
     },
     // OFF DAY: May 7 — driving Dallas → Atlanta (780 mi)
     {
@@ -276,7 +276,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Dallas, TX', toCity: 'Atlanta, GA', miles: 780 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 200, // major market, Fri
     },
     {
       index: 13,
@@ -294,7 +294,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Atlanta, GA', toCity: 'Charlotte, NC', miles: 240 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 150, // mid market, Sat
     },
     {
       index: 14,
@@ -312,7 +312,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Charlotte, NC', toCity: 'Richmond, VA', miles: 330 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 100, // secondary market, Sun
     },
     {
       index: 15,
@@ -330,7 +330,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Richmond, VA', toCity: 'Millvale, PA', miles: 360 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 100, // mid market, Mon
     },
     {
       index: 16,
@@ -348,7 +348,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Millvale, PA', toCity: 'Cincinnati, OH', miles: 290 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 150, // mid market, Tue, 1500 cap
     },
     // OFF DAY: May 13 — driving Cincinnati → Baltimore (510 mi)
     {
@@ -367,7 +367,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Cincinnati, OH', toCity: 'Baltimore, MD', miles: 510 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 125, // mid market, Thu
     },
     {
       index: 18,
@@ -385,7 +385,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Baltimore, MD', toCity: 'New York, NY', miles: 190 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 250, // major market, Fri, 1100 cap
     },
     // OFF DAY: May 16 — driving NYC → Montreal (375 mi)
     {
@@ -404,7 +404,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'New York, NY', toCity: 'Montreal, QC', miles: 375 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 125, // mid market, Sun
     },
     // OFF DAY: May 18
     {
@@ -423,7 +423,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Montreal, QC', toCity: 'Toronto, ON', miles: 335 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 150, // major market, Tue
     },
     {
       index: 21,
@@ -441,7 +441,7 @@ export const synestiaSpring2026: Tour = {
       },
       routing: { fromCity: 'Toronto, ON', toCity: 'Detroit, MI', miles: 235 },
       lodging: { type: 'camper', estimatedCost: 0 },
-      showGuarantee: 0,
+      showGuarantee: 125, // mid market, Wed
     },
   ],
 
@@ -456,7 +456,7 @@ export const synestiaSpring2026: Tour = {
   ],
 
   preTourExpenses: [
-    { category: 'Merch Inventory', label: 'T-shirts, longsleeves, hoodies, accessories, media', amount: 5500, note: 'Est. 580 units across all SKUs at blended $9.50 COGS' },
+    // Merch inventory NOT listed here — COGS line already accounts for production cost proportional to sales
     { category: 'Vehicle', label: 'Van rental (28 days)', amount: 4200, note: '15-passenger van, Greenvans or similar, $150/day' },
     { category: 'Vehicle', label: 'Trailer rental (28 days)', amount: 2100, note: 'Gear + merch trailer, $75/day' },
     { category: 'Insurance', label: 'Touring liability insurance', amount: 750, note: 'Basic touring coverage' },
@@ -605,7 +605,7 @@ export const synestiaSpring2026: Tour = {
   management: {
     cutPct: 0.15,
     appliedTo: 'gross',
-    bookingAgentPct: 0.10,
+    bookingAgentPct: 0,
   },
 
   metadata: {

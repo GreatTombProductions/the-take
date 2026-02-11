@@ -28,6 +28,7 @@ export default function TourHeader({ tour, totals, scenarioName, onScenarioChang
     { label: 'COGS', value: totals.cogs },
     { label: 'Venue Cuts', value: totals.venueCuts },
     { label: 'Mgmt Cuts', value: totals.mgmtCuts },
+    { label: 'Booking Agent', value: totals.bookingAgentCuts },
     { label: 'Pre-Tour', value: totals.preTourExpenses },
     { label: 'Fuel', value: totals.fuelExpenses },
     { label: 'Lodging', value: totals.lodgingExpenses },

@@ -47,6 +47,7 @@ export default function RiskAnalysis({ tour, totals }: Props) {
         The $30-50K claim does not survive arithmetic at Synestia's scale.
       </div>
 
+      <div className="overflow-x-auto">
       <table className="data-table">
         <thead>
           <tr>
@@ -85,7 +86,7 @@ export default function RiskAnalysis({ tour, totals }: Props) {
                   {formatCurrency(risk.withMitigationRange[0])}–{formatCurrency(risk.withMitigationRange[1])}
                 </td>
                 <td className="text-right font-mono text-gray-200">{formatCurrency(tourExpected)}</td>
-                <td className="text-gray-500 text-xs max-w-[200px] truncate" title={risk.mitigationNote}>
+                <td className="text-gray-500 text-xs whitespace-nowrap">
                   {risk.mitigationNote}
                 </td>
               </tr>
@@ -103,6 +104,7 @@ export default function RiskAnalysis({ tour, totals }: Props) {
           </tr>
         </tfoot>
       </table>
+      </div>
 
       <p className="text-xs text-gray-500 mt-4">
         Risk as % of gross merch ({formatCurrency(totals.grossMerch)}):{' '}
