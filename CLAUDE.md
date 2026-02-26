@@ -85,6 +85,6 @@ Sam (Synestia's frontman) enthusiastically agreed, said "time to book tickets," 
 
 ## Broader Context
 
-This lives in Ray's primary workspace (`greattomb/`). Megan's career trajectory is tracked in the CRM (`apps/scheme-crm/`). Ray's own band Heteromorphic Zoo will also benefit from the tour economics model. The music industry analysis capability compounds — every tour, every opportunity, every negotiation gets sharper.
+This lives in Ray's primary workspace (`greattomb/`). Megan's career trajectory is tracked in the CRM (`music/megan-crm/`). Ray's own band Heteromorphic Zoo will also benefit from the tour economics model. The music industry analysis capability compounds — every tour, every opportunity, every negotiation gets sharper.
 
 The tool itself is the message. Not "please reconsider." Not "this isn't fair." But: "Here's what your managers should be telling you, except they probably don't have this level of precision. We do."
